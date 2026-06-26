@@ -128,10 +128,11 @@ def main():
 
     if WEBHOOK_URL:
         app.run_webhook(
-            listen="0.0.0.0",
-            port=PORT,
-            webhook_url=f"{WEBHOOK_URL}/webhook"
-        )
+    listen="0.0.0.0",
+    port=PORT,
+    url_path="webhook",                # <-- add this
+    webhook_url=f"{WEBHOOK_URL}/webhook"
+	)
     else:
         # Fallback – should not happen on Render
         app.run_polling()
