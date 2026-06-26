@@ -124,7 +124,7 @@ def main():
 
     # Webhook mode for Render
     PORT = int(os.environ.get("PORT", 8443))
-    WEBHOOK_URL = os.environ.get("RENDER_EXTERNAL_URL")  # Render provides this
+    WEBHOOK_URL = os.environ.get("RENDER_EXTERNAL_URL")  # Provided by Render
 
     if WEBHOOK_URL:
         app.run_webhook(
@@ -133,7 +133,7 @@ def main():
             webhook_url=f"{WEBHOOK_URL}/webhook"
         )
     else:
-        # Fallback to polling if running locally
+        # Fallback – should not happen on Render
         app.run_polling()
 
 if __name__ == "__main__":
